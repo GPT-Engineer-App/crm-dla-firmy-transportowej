@@ -46,12 +46,19 @@ const Index = () => {
     setIsMenuVisible(true);
   };
 
+  const handleLogoClick = () => {
+    setIsMenuVisible(true);
+    setSelectedOption("");
+  };
+
   return (
     <Flex direction="column" minHeight="100vh">
       <Box bg="#006600" py={4} color="white">
-        <Heading as="h1" size="xl" textAlign="center" fontWeight="bold">
-          U.T.D. Demianiuk
-        </Heading>
+        <Button variant="unstyled" onClick={handleLogoClick}>
+          <Heading as="h1" size="xl" textAlign="center" fontWeight="bold">
+            U.T.D. Demianiuk
+          </Heading>
+        </Button>
       </Box>
       <Box flex={1} bg="#A0A0A0" p={8}>
         {!isLoggedIn ? (
