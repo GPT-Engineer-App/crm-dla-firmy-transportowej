@@ -31,12 +31,19 @@ const Index = () => {
   };
 
   const [isMenuVisible, setIsMenuVisible] = useState(true);
+  const [previousOption, setPreviousOption] = useState("");
 
   const handleOptionClick = (option) => {
+    setPreviousOption(selectedOption);
     setIsMenuVisible(false);
     setTimeout(() => {
       setSelectedOption(option);
     }, 500);
+  };
+
+  const handleBack = () => {
+    setSelectedOption(previousOption);
+    setIsMenuVisible(true);
   };
 
   return (
@@ -113,7 +120,16 @@ const Index = () => {
         )}
       </Box>
       <Box bg="#F00000" py={4} color="white">
-        <Text textAlign="center">&copy; 2023 U.T.D. Demianiuk</Text>
+        <Flex justify="space-between" align="center">
+          {isLoggedIn && (
+            <Button colorScheme="red" onClick={handleBack} ml={4}>
+              Cofnij
+            </Button>
+          )}
+          <Text textAlign="center" flex={1}>
+            &copy; 2023 U.T.D. Demianiuk
+          </Text>
+        </Flex>
       </Box>
     </Flex>
   );
