@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Button, Flex, Heading, Input, Text, VStack, useToast } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Input, Text, VStack, useToast, Fade } from "@chakra-ui/react";
 
 const Index = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -30,8 +30,13 @@ const Index = () => {
     }
   };
 
+  const [isMenuVisible, setIsMenuVisible] = useState(true);
+
   const handleOptionClick = (option) => {
-    setSelectedOption(option);
+    setIsMenuVisible(false);
+    setTimeout(() => {
+      setSelectedOption(option);
+    }, 500);
   };
 
   return (
@@ -52,54 +57,58 @@ const Index = () => {
           </VStack>
         ) : (
           <>
-            <VStack spacing={4} align="stretch">
-              <Button colorScheme="green" onClick={() => handleOptionClick("pojazdy")}>
-                Pojazdy
-              </Button>
-              <Button colorScheme="green" onClick={() => handleOptionClick("kierowcy")}>
-                Kierowcy
-              </Button>
-              <Button colorScheme="green" onClick={() => handleOptionClick("zmienne")}>
-                Zmienne
-              </Button>
-              <Button colorScheme="green" onClick={() => handleOptionClick("kalkulator")}>
-                Kalkulator trasy
-              </Button>
-            </VStack>
-            {selectedOption === "pojazdy" && (
-              <VStack spacing={4} mt={8} align="stretch">
-                {/* ikonki */}
-                <Button colorScheme="green" onClick={() => handleOptionClick("ciezarowe")}>
-                  Ciężarowe
+            <Fade in={isMenuVisible}>
+              <VStack spacing={4} align="stretch">
+                <Button colorScheme="green" onClick={() => handleOptionClick("pojazdy")}>
+                  Pojazdy
                 </Button>
-                {/* ikonki */}
-                <Button colorScheme="green" onClick={() => handleOptionClick("siodlowe")}>
-                  Siodłowe
+                <Button colorScheme="green" onClick={() => handleOptionClick("kierowcy")}>
+                  Kierowcy
                 </Button>
-                {/* ikonki */}
-                <Button colorScheme="green" onClick={() => handleOptionClick("zabudowy")}>
-                  Zabudowy
+                <Button colorScheme="green" onClick={() => handleOptionClick("zmienne")}>
+                  Zmienne
                 </Button>
-                {/* ikonki */}
-                <Button colorScheme="green" onClick={() => handleOptionClick("przyczepy")}>
-                  Przyczepy
-                </Button>
-                {/* ikonki */}
-                <Button colorScheme="green" onClick={() => handleOptionClick("naczepy")}>
-                  Naczepy
-                </Button>
-                {/* ikonki */}
-                <Button colorScheme="green" onClick={() => handleOptionClick("wszystkie")}>
-                  Wszystkie
+                <Button colorScheme="green" onClick={() => handleOptionClick("kalkulator")}>
+                  Kalkulator trasy
                 </Button>
               </VStack>
-            )}
-            {selectedOption === "wszystkie" && (
-              <VStack spacing={4} mt={8} align="stretch">
-                <Text>Wyświetlanie wszystkich pojazdów...</Text>
-                {/* Tutaj wyświetl dane z tabel: Ciezarowe, Siodlowe, Zabudowy, Przyczepy, Naczepy */}
-              </VStack>
-            )}
+            </Fade>
+            <Fade in={!isMenuVisible}>
+              {selectedOption === "pojazdy" && (
+                <VStack spacing={4} mt={8} align="stretch">
+                  {}
+                  <Button colorScheme="green" onClick={() => handleOptionClick("ciezarowe")}>
+                    Ciężarowe
+                  </Button>
+                  {}
+                  <Button colorScheme="green" onClick={() => handleOptionClick("siodlowe")}>
+                    Siodłowe
+                  </Button>
+                  {}
+                  <Button colorScheme="green" onClick={() => handleOptionClick("zabudowy")}>
+                    Zabudowy
+                  </Button>
+                  {}
+                  <Button colorScheme="green" onClick={() => handleOptionClick("przyczepy")}>
+                    Przyczepy
+                  </Button>
+                  {}
+                  <Button colorScheme="green" onClick={() => handleOptionClick("naczepy")}>
+                    Naczepy
+                  </Button>
+                  {}
+                  <Button colorScheme="green" onClick={() => handleOptionClick("wszystkie")}>
+                    Wszystkie
+                  </Button>
+                </VStack>
+              )}
+              {selectedOption === "wszystkie" && (
+                <VStack spacing={4} mt={8} align="stretch">
+                  <Text>Wyświetlanie wszystkich pojazdów...</Text>
+                  {}
+                </VStack>
+              )}
+            </Fade>
           </>
         )}
       </Box>
