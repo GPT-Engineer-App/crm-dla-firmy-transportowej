@@ -60,82 +60,82 @@ const Index = () => {
           </Heading>
         </Button>
       </Box>
-      <Box flex={1} bg="#A0A0A0" p={8} position="relative">
+      <Box flex={1} bg="#A0A0A0" p={8}>
         {isLoggedIn && (
-          <Button colorScheme="red" onClick={handleBack} position="absolute" top={4} left={4}>
+          <Button colorScheme="red" onClick={handleBack} position="absolute" top={4} left={4} zIndex="1">
             Cofnij
           </Button>
         )}
-        {!isLoggedIn ? (
-          <VStack spacing={4} align="stretch">
-            <Input placeholder="Login" value={username} onChange={(e) => setUsername(e.target.value)} />
-            <Input placeholder="Hasło" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            <Button colorScheme="green" onClick={handleLogin}>
-              Zaloguj
-            </Button>
-          </VStack>
-        ) : (
-          <>
-            <Fade in={isMenuVisible}>
-              <VStack spacing={4} align="stretch">
-                <Button colorScheme="green" onClick={() => handleOptionClick("pojazdy")}>
-                  Pojazdy
-                </Button>
-                <Button colorScheme="green" onClick={() => handleOptionClick("kierowcy")}>
-                  Kierowcy
-                </Button>
-                <Button colorScheme="green" onClick={() => handleOptionClick("zmienne")}>
-                  Zmienne
-                </Button>
-                <Button colorScheme="green" onClick={() => handleOptionClick("kalkulator")}>
-                  Kalkulator trasy
-                </Button>
-              </VStack>
-            </Fade>
-            <Fade in={!isMenuVisible}>
-              {selectedOption === "pojazdy" && (
-                <VStack spacing={4} mt={8} align="stretch">
-                  {}
-                  <Button colorScheme="green" onClick={() => handleOptionClick("ciezarowe")}>
-                    Ciężarowe
+        <Flex justify="center" align="center" h="100%" pt={12} position="relative">
+          {!isLoggedIn ? (
+            <VStack spacing={4} align="stretch">
+              <Input placeholder="Login" value={username} onChange={(e) => setUsername(e.target.value)} />
+              <Input placeholder="Hasło" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+              <Button colorScheme="green" onClick={handleLogin}>
+                Zaloguj
+              </Button>
+            </VStack>
+          ) : (
+            <>
+              <Fade in={isMenuVisible}>
+                <VStack spacing={4} align="stretch">
+                  <Button colorScheme="green" onClick={() => handleOptionClick("pojazdy")}>
+                    Pojazdy
                   </Button>
-                  {}
-                  <Button colorScheme="green" onClick={() => handleOptionClick("siodlowe")}>
-                    Siodłowe
+                  <Button colorScheme="green" onClick={() => handleOptionClick("kierowcy")}>
+                    Kierowcy
                   </Button>
-                  {}
-                  <Button colorScheme="green" onClick={() => handleOptionClick("zabudowy")}>
-                    Zabudowy
+                  <Button colorScheme="green" onClick={() => handleOptionClick("zmienne")}>
+                    Zmienne
                   </Button>
-                  {}
-                  <Button colorScheme="green" onClick={() => handleOptionClick("przyczepy")}>
-                    Przyczepy
-                  </Button>
-                  {}
-                  <Button colorScheme="green" onClick={() => handleOptionClick("naczepy")}>
-                    Naczepy
-                  </Button>
-                  {}
-                  <Button colorScheme="green" onClick={() => handleOptionClick("wszystkie")}>
-                    Wszystkie
+                  <Button colorScheme="green" onClick={() => handleOptionClick("kalkulator")}>
+                    Kalkulator trasy
                   </Button>
                 </VStack>
-              )}
-              {selectedOption === "wszystkie" && (
-                <VStack spacing={4} mt={8} align="stretch">
-                  <Text>Wyświetlanie wszystkich pojazdów...</Text>
-                  {}
-                </VStack>
-              )}
-            </Fade>
-          </>
-        )}
+              </Fade>
+              <Fade in={!isMenuVisible}>
+                {selectedOption === "pojazdy" && (
+                  <VStack spacing={4} mt={8} align="stretch">
+                    {}
+                    <Button colorScheme="green" onClick={() => handleOptionClick("ciezarowe")}>
+                      Ciężarowe
+                    </Button>
+                    {}
+                    <Button colorScheme="green" onClick={() => handleOptionClick("siodlowe")}>
+                      Siodłowe
+                    </Button>
+                    {}
+                    <Button colorScheme="green" onClick={() => handleOptionClick("zabudowy")}>
+                      Zabudowy
+                    </Button>
+                    {}
+                    <Button colorScheme="green" onClick={() => handleOptionClick("przyczepy")}>
+                      Przyczepy
+                    </Button>
+                    {}
+                    <Button colorScheme="green" onClick={() => handleOptionClick("naczepy")}>
+                      Naczepy
+                    </Button>
+                    {}
+                    <Button colorScheme="green" onClick={() => handleOptionClick("wszystkie")}>
+                      Wszystkie
+                    </Button>
+                  </VStack>
+                )}
+                {selectedOption === "wszystkie" && (
+                  <VStack spacing={4} mt={8} align="stretch">
+                    <Text>Wyświetlanie wszystkich pojazdów...</Text>
+                    {}
+                  </VStack>
+                )}
+              </Fade>
+            </>
+          )}
+        </Flex>
       </Box>
       <Box bg="#F00000" py={4} color="white">
-        <Text textAlign="center">
-            &copy; 2023 U.T.D. Demianiuk
-          </Text>
-        </Box>
+        <Text textAlign="center">&copy; 2023 U.T.D. Demianiuk</Text>
+      </Box>
     </Flex>
   );
 };
