@@ -53,14 +53,19 @@ const Index = () => {
 
   return (
     <Flex direction="column" minHeight="100vh">
-      <Box bg="#006600" py={4} color="white">
+      <Box bg="#006600" py={4} color="white" display="flex" justifyContent="center">
         <Button variant="unstyled" onClick={handleLogoClick}>
-          <Heading as="h1" size="xl" textAlign="center" fontWeight="bold">
+          <Heading as="h1" size="xl" fontWeight="bold">
             U.T.D. Demianiuk
           </Heading>
         </Button>
       </Box>
-      <Box flex={1} bg="#A0A0A0" p={8}>
+      <Box flex={1} bg="#A0A0A0" p={8} position="relative">
+        {isLoggedIn && (
+          <Button colorScheme="red" onClick={handleBack} position="absolute" top={4} left={4}>
+            Cofnij
+          </Button>
+        )}
         {!isLoggedIn ? (
           <VStack spacing={4} align="stretch">
             <Input placeholder="Login" value={username} onChange={(e) => setUsername(e.target.value)} />
@@ -127,17 +132,10 @@ const Index = () => {
         )}
       </Box>
       <Box bg="#F00000" py={4} color="white">
-        <Flex justify="space-between" align="center">
-          {isLoggedIn && (
-            <Button colorScheme="red" onClick={handleBack} ml={4}>
-              Cofnij
-            </Button>
-          )}
-          <Text textAlign="center" flex={1}>
+        <Text textAlign="center">
             &copy; 2023 U.T.D. Demianiuk
           </Text>
-        </Flex>
-      </Box>
+        </Box>
     </Flex>
   );
 };
