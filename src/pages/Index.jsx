@@ -53,14 +53,14 @@ const Index = () => {
 
   return (
     <Flex direction="column" minHeight="100vh">
-      <Box bg="#006600" py={4} color="white" display="flex" justifyContent="center">
+      <Box bg="green.600" py={4} color="white" display="flex" justifyContent="center" borderRadius="md" boxShadow="md">
         <Button variant="unstyled" onClick={handleLogoClick}>
           <Heading as="h1" size="xl" fontWeight="bold">
             U.T.D. Demianiuk
           </Heading>
         </Button>
       </Box>
-      <Box flex={1} bg="#A0A0A0" p={8}>
+      <Box flex={1} bg="gray.100" p={8} borderRadius="md" boxShadow="md">
         {isLoggedIn && (
           <Button colorScheme="red" onClick={handleBack} position="absolute" top={4} left={4} zIndex="1">
             Cofnij
@@ -71,7 +71,7 @@ const Index = () => {
             <VStack spacing={4} align="stretch">
               <Input placeholder="Login" value={username} onChange={(e) => setUsername(e.target.value)} />
               <Input placeholder="Hasło" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-              <Button colorScheme="green" onClick={handleLogin}>
+              <Button colorScheme="green" onClick={handleLogin} bg="green.600" _hover={{ bg: "green.500" }} borderRadius="md" boxShadow="md">
                 Zaloguj
               </Button>
             </VStack>
@@ -79,7 +79,7 @@ const Index = () => {
             <>
               <Fade in={isMenuVisible}>
                 <VStack spacing={4} align="stretch">
-                  <Button colorScheme="green" onClick={() => handleOptionClick("pojazdy")}>
+                  <Button colorScheme="green" onClick={() => handleOptionClick("pojazdy")} borderRadius="md" boxShadow="md">
                     Pojazdy
                   </Button>
                   <Button colorScheme="green" onClick={() => handleOptionClick("kierowcy")}>
@@ -133,8 +133,10 @@ const Index = () => {
           )}
         </Flex>
       </Box>
-      <Box bg="#F00000" py={4} color="white">
-        <Text textAlign="center">&copy; 2023 U.T.D. Demianiuk</Text>
+      <Box bg="red.500" py={4} color="white" borderRadius="md" boxShadow="md">
+        <Text textAlign="center" textShadow="1px 1px #000000">
+          &copy; 2023 U.T.D. Demianiuk
+        </Text>
       </Box>
     </Flex>
   );
